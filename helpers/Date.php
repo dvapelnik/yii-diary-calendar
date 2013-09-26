@@ -163,11 +163,6 @@ class Date extends CComponent
         return Yii::app()->dateFormatter->format($isLong ? 'EEEE' : 'EEE', strtotime((string)$this));
     }
 
-    protected function toJDCalendar()
-    {
-        return gregoriantojd($this->month, $this->day, $this->year);
-    }
-
     protected function getCountOfDaysInCurrentMonth()
     {
         return cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year);
