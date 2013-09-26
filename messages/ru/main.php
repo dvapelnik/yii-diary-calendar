@@ -1,4 +1,4 @@
 <?php
 return array(
-	'Calendar' => 'Календарь',
+    'Calendar' => 'Календарь',
 );
