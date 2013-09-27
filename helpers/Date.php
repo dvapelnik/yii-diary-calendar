@@ -196,18 +196,6 @@ class Date extends CComponent
         return $daysInMonth;
     }
 
-    public function generateDaysInCurrentMonthAsJSON()
-    {
-        /**
-         * @var $date Date
-         */
-        foreach($this->generateDaysInCurrentMonth() as $date)
-        {
-
-        }
-
-    }
-
     public function getDayOfWeekNumber()
     {
         return Yii::app()->dateFormatter->format('e', strtotime((string)$this));
