@@ -29,7 +29,6 @@ class DefaultController extends Controller
         try
         {
             $currentDay = new Date($year, $month, empty($_GET) ? date('d') : 1);
-            VarDumper::dump($currentDay->getUNIX());
             $month = new Month($currentDay);
         } catch(CException $e)
         {

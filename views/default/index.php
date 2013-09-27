@@ -4,10 +4,19 @@
  * @var $month Month
  * @var $this DefaultController
  */
+
+$assetsUrl = $this->module->assetsUrl;
+
+if(Yii::app()->clientScript->getPackageBaseUrl('jquery') === false)
+{
+    Yii::app()->getClientScript()->registerCoreScript('jquery');
+}
+
+Yii::app()->getClientScript()->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS_END);
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo $this->module->assetsUrl; ?>/css/style.css">
-<link rel="stylesheet" type="text/css" href="<?php echo $this->module->assetsUrl; ?>/css/mixtures.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $assetsUrl; ?>/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $assetsUrl; ?>/css/mixtures.css">
 
 <h1><?php echo Yii::t('CalendarModule.main', 'Calendar') ?></h1>
 
@@ -75,14 +84,24 @@
                             <div class="float-left">
                                 <?php
                                 echo CHtml::link(
-                                    CHtml::image($assetsPath.'/images/note.png')
+                                    CHtml::image($assetsPath . '/images/note.png'),
+                                    '#',
+                                    array(
+                                        'data-cal-unix' => $day->getUNIX(),
+                                        'data-action'   => 'note',
+                                    )
                                 );
                                 ?>
                             </div>
                             <div class="float-left">
                                 <?php
                                 echo CHtml::link(
-                                    CHtml::image($assetsPath.'/images/appo.png')
+                                    CHtml::image($assetsPath . '/images/appo.png'),
+                                    '#',
+                                    array(
+                                        'data-cal-unix' => $day->getUNIX(),
+                                        'data-action'   => 'appo',
+                                    )
                                 );
                                 ?>
                             </div>
