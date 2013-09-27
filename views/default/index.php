@@ -64,7 +64,7 @@
             <tbody>
             <tr>
                 <?php foreach ($month->getMonth(true) as $day): ?>
-                <td <?php if(!$day->inMonth): ?>class="day-locked" <?php endif ?>>
+                <td <?php if (!$day->inMonth): ?>class="day-locked" <?php endif ?>>
                     <div class="day-container">
                         <div class="day-header">
                             <?php echo $day->day ?>

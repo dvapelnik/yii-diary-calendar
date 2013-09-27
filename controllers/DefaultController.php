@@ -2,6 +2,25 @@
 
 class DefaultController extends Controller
 {
+    public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            array('allow',
+                'users'   => array('@'),
+            ),
+            array('deny',
+                'users'   => array('?'),
+            ),
+        );
+    }
+
     public function actionIndex()
     {
         $year = Yii::app()->request->getParam('year', date('Y'));
@@ -23,5 +42,13 @@ class DefaultController extends Controller
                 'month'      => $month,
             )
         );
+    }
+
+    public function getUserIsLogged()
+    {
+    }
+
+    public function getUserId()
+    {
     }
 }

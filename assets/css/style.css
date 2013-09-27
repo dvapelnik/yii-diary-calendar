@@ -20,7 +20,7 @@
 	margin: 0;
 }
 
-.calendar-body table tbody tr td.day-locked{
+.calendar-body table tbody tr td.day-locked {
 	background-color: whitesmoke;
 }
 
@@ -37,11 +37,16 @@
 	border-radius: 4px;
 }
 
-.calendar-body table tbody tr td div.day-container:hover{
+.calendar-body table tbody tr td div.day-container:hover {
 	background-color: #d3d3d3;
+	-webkit-transition: background-color 100ms linear;
+	-moz-transition: background-color 100ms linear;
+	-o-transition: background-color 100ms linear;
+	-ms-transition: background-color 100ms linear;
+	transition: background-color 100ms linear;
 }
 
-.calendar-body table tbody tr td div.day-container div.day-header{
+.calendar-body table tbody tr td div.day-container div.day-header {
 	text-align: right;
 	font-weight: bold;
 	padding: 4px 4px 4px 0;
