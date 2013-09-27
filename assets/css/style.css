@@ -14,18 +14,20 @@
 
 .calendar-body table {
 	width: 100%;
+	border-spacing: 0;
 }
 
 .calendar-body table td {
 	margin: 0;
 }
 
-.calendar-body table tbody tr td.day-locked {
-	background-color: whitesmoke;
+.calendar-body table tbody tr td.day-locked div.day-container {
+	background-color: #d3d3d3;
+	opacity: 0.2;
 }
 
 .calendar-body table thead {
-	background-color: darkgray;
+	background-color: #708090;
 	font-weight: bold;
 	color: #ffffff;
 	text-align: center;
@@ -33,21 +35,50 @@
 
 .calendar-body table tbody tr td div.day-container {
 	min-height: 100px;
-	border: 1px solid darkslategray;
+	border: 1px solid lightslategray;
 	border-radius: 4px;
+	margin: 1px;
 }
 
 .calendar-body table tbody tr td div.day-container:hover {
-	background-color: #d3d3d3;
+	background-color: #fdeaa8;
 	-webkit-transition: background-color 100ms linear;
 	-moz-transition: background-color 100ms linear;
 	-o-transition: background-color 100ms linear;
 	-ms-transition: background-color 100ms linear;
 	transition: background-color 100ms linear;
+
+	opacity: 1;
+	-webkit-transition: opacity 100ms linear;
+	-moz-transition: opacity 100ms linear;
+	-o-transition: opacity 100ms linear;
+	-ms-transition: opacity 100ms linear;
+	transition: opacity 100ms linear;
 }
 
 .calendar-body table tbody tr td div.day-container div.day-header {
 	text-align: right;
 	font-weight: bold;
 	padding: 4px 4px 4px 0;
+}
+
+/* image size */
+.calendar-body table tbody tr td div.day-container div.day-header img{
+	height: 16px;
+}
+
+/* opacity for imagws in day in month */
+.calendar-body table tbody tr td:not(.day-locked) div.day-container div.day-header img{
+	height: 16px;
+	opacity: .2;
+}
+
+/* show images in day in month */
+.calendar-body table tbody tr td:not(.day-locked) div.day-container:hover > div.day-header img{
+	opacity: 1;
+	-webkit-transition: opacity 100ms linear;
+	-moz-transition: opacity 100ms linear;
+	-o-transition: opacity 100ms linear;
+	-ms-transition: opacity 100ms linear;
+	transition: opacity 100ms linear;
 }
