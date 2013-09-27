@@ -9,6 +9,7 @@ class Date extends CComponent
 {
     private $_prevMonth = null;
     private $_nextMonth = null;
+    private $_unix = null;
 
     public $year;
     public $month;
@@ -212,7 +213,11 @@ class Date extends CComponent
     }
 
     public function getUNIX(){
-        return strtotime(sprintf('%04s-%02s-%02s', $this->year, $this->month, $this->day));
+        if($this->_unix === null){
+            $this->_unix = strtotime(sprintf('%04s-%02s-%02s', $this->year, $this->month, $this->day));
+        }
+
+        return $this->_unix;
     }
 
     protected function getCountOfDaysInCurrentMonth()
