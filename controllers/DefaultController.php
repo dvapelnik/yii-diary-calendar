@@ -43,12 +43,4 @@ class DefaultController extends Controller
             )
         );
     }
-
-    public function getUserIsLogged()
-    {
-    }
-
-    public function getUserId()
-    {
-    }
 }
