@@ -1,0 +1,48 @@
+#calendar {
+
+}
+
+#calendar .calendar-header {
+	text-align: center;
+}
+
+#calendar .calendar-header .prev-month,
+#calendar .calendar-header .current,
+#calendar .calendar-header .next-month {
+	display: inline-block;
+}
+
+.calendar-body table {
+	width: 100%;
+}
+
+.calendar-body table td {
+	margin: 0;
+}
+
+.calendar-body table tbody tr td.day-locked{
+	background-color: whitesmoke;
+}
+
+.calendar-body table thead {
+	background-color: darkgray;
+	font-weight: bold;
+	color: #ffffff;
+	text-align: center;
+}
+
+.calendar-body table tbody tr td div.day-container {
+	min-height: 100px;
+	border: 1px solid darkslategray;
+	border-radius: 4px;
+}
+
+.calendar-body table tbody tr td div.day-container:hover{
+	background-color: #d3d3d3;
+}
+
+.calendar-body table tbody tr td div.day-container div.day-header{
+	text-align: right;
+	font-weight: bold;
+	padding: 4px 4px 4px 0;
+}

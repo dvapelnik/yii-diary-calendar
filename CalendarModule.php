@@ -42,7 +42,7 @@ class CalendarModule extends CWebModule
         if($this->_assetsUrl === null)
         {
             $this->_assetsUrl = Yii::app()->getAssetManager()->publish(
-                Yii::getPathOfAlias('calendar.assets')
+                Yii::getPathOfAlias('calendar.assets'), false, -1, YII_DEBUG
             );
         }
 

@@ -17,6 +17,7 @@ class Date extends CComponent
     public $dowVerboseShort;
     public $dowVerboseLong;
     public $monthVerbose;
+    public $inMonth = true;
 
     public function __construct($year, $month, $day = 1)
     {
@@ -67,7 +68,7 @@ class Date extends CComponent
     {
         $year = date('Y', $timestamp);
         $month = date('n', $timestamp);
-        $day = date('d', $timestamp);
+        $day = date('j', $timestamp);
 
         return new Date($year, $month, $day);
     }
