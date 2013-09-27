@@ -2,6 +2,8 @@
 
 class CalendarModule extends CWebModule
 {
+    private $_assetsUrl;
+
     public function init()
     {
         // this method is called when the module is being created
@@ -33,5 +35,17 @@ class CalendarModule extends CWebModule
         {
             return false;
         }
+    }
+
+    public function getAssetsUrl()
+    {
+        if($this->_assetsUrl === null)
+        {
+            $this->_assetsUrl = Yii::app()->getAssetManager()->publish(
+                Yii::getPathOfAlias('calendar.assets')
+            );
+        }
+
+        return $this->_assetsUrl;
     }
 }
