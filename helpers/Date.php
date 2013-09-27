@@ -211,6 +211,10 @@ class Date extends CComponent
         return Yii::app()->dateFormatter->format('LLLL', strtotime((string)$this));
     }
 
+    public function getUNIX(){
+        return strtotime(sprintf('%04s-%02s-%02s', $this->year, $this->month, $this->day));
+    }
+
     protected function getCountOfDaysInCurrentMonth()
     {
         return cal_days_in_month(CAL_GREGORIAN, $this->month, $this->year);
