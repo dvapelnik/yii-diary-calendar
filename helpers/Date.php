@@ -24,15 +24,43 @@ class Date extends CComponent
         $this->month = (string)$month;
         $this->day = (string)$day;
 
+        if(!$this->isDayInMonth())
+        {
+            throw new CException('Day is not in month');
+        }
+
         $this->dow = $this->getDayOfWeekNumber();
         $this->dowVerboseShort = $this->getDeyOfWeekVerbose(false);
         $this->dowVerboseLong = $this->getDeyOfWeekVerbose();
         $this->monthVerbose = $this->getMonthVerbose();
 
-        if(!$this->isDayInMonth())
+    }
+
+    /**
+     * Returns the week day names in the specified width.
+     * @param string $width weekday name width.  It can be 'wide', 'abbreviated' or 'narrow'.
+     * @param boolean $standAlone whether the week day name should be returned in stand-alone format
+     * @param null $index
+     * @return array the weekday names indexed by weekday values (1-7, 1 Monday, etc.)
+     */
+    public static function GetDaysOfWeek($width, $standAlone = false, $index = null)
+    {
+        $daysOfWeek = array();
+
+        $weekDayNames = Yii::app()->locale->getWeekDayNames($width, true);
+        for($i = 1; $i <= 7; $i++)
         {
-            throw new CException('Day is not in month');
+            $daysOfWeek[$i] = isset($weekDayNames[$i]) ? $weekDayNames[$i] : $weekDayNames[0];
         }
+
+        if($index === null)
+        {
+            return $daysOfWeek;
+        } else
+        {
+            return $daysOfWeek[$index];
+        }
+
     }
 
     public static function GetFromUNIX($timestamp)
