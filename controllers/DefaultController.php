@@ -13,10 +13,10 @@ class DefaultController extends Controller
     {
         return array(
             array('allow',
-                'users'   => array('@'),
+                'users' => array('@'),
             ),
             array('deny',
-                'users'   => array('?'),
+                'users' => array('?'),
             ),
         );
     }
@@ -29,6 +29,7 @@ class DefaultController extends Controller
         try
         {
             $currentDay = new Date($year, $month, empty($_GET) ? date('d') : 1);
+            VarDumper::dump($currentDay->getUNIX());
             $month = new Month($currentDay);
         } catch(CException $e)
         {
@@ -42,5 +43,17 @@ class DefaultController extends Controller
                 'month'      => $month,
             )
         );
+    }
+
+    public function actionAdd()
+    {
+    }
+
+    public function actionEdit()
+    {
+    }
+
+    public function actionRemove()
+    {
     }
 }
