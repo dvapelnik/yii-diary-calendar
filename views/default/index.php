@@ -7,6 +7,7 @@
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo $this->module->assetsUrl; ?>/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $this->module->assetsUrl; ?>/css/mixtures.css">
 
 <h1><?php echo Yii::t('CalendarModule.main', 'Calendar') ?></h1>
 
@@ -67,7 +68,24 @@
                 <td <?php if (!$day->inMonth): ?>class="day-locked" <?php endif ?>>
                     <div class="day-container">
                         <div class="day-header">
-                            <?php echo $day->day ?>
+                            <?php
+                            echo $day->day;
+                            $assetsPath = $this->module->getAssetsUrl();
+                            ?>
+                            <div class="float-left">
+                                <?php
+                                echo CHtml::link(
+                                    CHtml::image($assetsPath.'/images/note.png')
+                                );
+                                ?>
+                            </div>
+                            <div class="float-left">
+                                <?php
+                                echo CHtml::link(
+                                    CHtml::image($assetsPath.'/images/appo.png')
+                                );
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </td>
