@@ -7,23 +7,27 @@
  */
 class Date extends CComponent
 {
+    private $_prevMonth = null;
+    private $_nextMonth = null;
+
     public $year;
     public $month;
     public $day;
     public $dow;
     public $dowVerboseShort;
     public $dowVerboseLong;
+    public $monthVerbose;
 
     public function __construct($year, $month, $day = 1)
     {
-//        $this->_formatter = new CDateFormatter(Yii::app()->language);
-
         $this->year = (string)$year;
         $this->month = (string)$month;
         $this->day = (string)$day;
+
         $this->dow = $this->getDayOfWeekNumber();
         $this->dowVerboseShort = $this->getDeyOfWeekVerbose(false);
         $this->dowVerboseLong = $this->getDeyOfWeekVerbose();
+        $this->monthVerbose = $this->getMonthVerbose();
 
         if(!$this->isDayInMonth())
         {
@@ -58,12 +62,22 @@ class Date extends CComponent
 
     public function getPrevMonth()
     {
-        return $this->subMonth(1);
+        if($this->_prevMonth === null)
+        {
+            $this->_prevMonth = $this->subMonth(1);
+        }
+
+        return $this->_prevMonth;
     }
 
     public function getNextMonth()
     {
-        return $this->addMonth(1);
+        if($this->_nextMonth === null)
+        {
+            $this->_nextMonth = $this->addMonth(1);
+        }
+
+        return $this->_nextMonth;
     }
 
     public function getPrevYear()
@@ -153,6 +167,18 @@ class Date extends CComponent
         return $daysInMonth;
     }
 
+    public function generateDaysInCurrentMonthAsJSON()
+    {
+        /**
+         * @var $date Date
+         */
+        foreach($this->generateDaysInCurrentMonth() as $date)
+        {
+
+        }
+
+    }
+
     public function getDayOfWeekNumber()
     {
         return Yii::app()->dateFormatter->format('e', strtotime((string)$this));
@@ -161,6 +187,11 @@ class Date extends CComponent
     public function getDeyOfWeekVerbose($isLong = true)
     {
         return Yii::app()->dateFormatter->format($isLong ? 'EEEE' : 'EEE', strtotime((string)$this));
+    }
+
+    public function getMonthVerbose()
+    {
+        return Yii::app()->dateFormatter->format('LLLL', strtotime((string)$this));
     }
 
     protected function getCountOfDaysInCurrentMonth()
