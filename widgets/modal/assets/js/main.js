@@ -34,7 +34,7 @@ $(document).ready(function ()
 
 function hideModal()
 {
-    $('.modal-widget').hide();
+    $('.modal-widget').hide(500);
     $('#' + replacePath).html('');
 }
 
