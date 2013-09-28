@@ -7,9 +7,9 @@
  */
 class Date extends CComponent
 {
-    private $_prevMonth = null;
-    private $_nextMonth = null;
-    private $_unix = null;
+    protected $_prevMonth = null;
+    protected $_nextMonth = null;
+    protected $_unix = null;
 
     public $year;
     public $month;
@@ -76,7 +76,7 @@ class Date extends CComponent
 
     public function __toString()
     {
-        return sprintf("%s-%s-%s", $this->year, $this->month, $this->day);
+        return Yii::app()->locale->dateFormatter->format('yyyy-MM-dd', $this->getUNIX());
     }
 
     //region Prev-Next
@@ -212,8 +212,10 @@ class Date extends CComponent
         return Yii::app()->dateFormatter->format('LLLL', strtotime((string)$this));
     }
 
-    public function getUNIX(){
-        if($this->_unix === null){
+    public function getUNIX()
+    {
+        if($this->_unix === null)
+        {
             $this->_unix = strtotime(sprintf('%04s-%02s-%02s', $this->year, $this->month, $this->day));
         }
 
