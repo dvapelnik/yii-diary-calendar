@@ -16,17 +16,14 @@ class CalendarModule extends CWebModule
                 'calendar.components.*',
                 'calendar.messages.*.*',
                 'calendar.helpers.*',
+                'calendar.widgets.modal.*',
             )
         );
     }
 
     public function beforeControllerAction($controller, $action)
     {
-        if(parent::beforeControllerAction(
-            $controller,
-            $action
-        )
-        )
+        if(parent::beforeControllerAction($controller, $action))
         {
             // this method is called before any module controller action is performed
             // you may place customized code here

@@ -63,18 +63,18 @@
 }
 
 /* image size */
-.calendar-body table tbody tr td div.day-container div.day-header img{
+.calendar-body table tbody tr td div.day-container div.day-header img {
 	height: 16px;
 }
 
 /* opacity for imagws in day in month */
-.calendar-body table tbody tr td:not(.day-locked) div.day-container div.day-header img{
+.calendar-body table tbody tr td:not(.day-locked) div.day-container div.day-header img {
 	height: 16px;
 	opacity: .2;
 }
 
 /* show images in day in month */
-.calendar-body table tbody tr td:not(.day-locked) div.day-container:hover > div.day-header img{
+.calendar-body table tbody tr td:not(.day-locked) div.day-container:hover > div.day-header img {
 	opacity: 1;
 	-webkit-transition: opacity 100ms linear;
 	-moz-transition: opacity 100ms linear;
