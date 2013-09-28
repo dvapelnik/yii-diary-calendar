@@ -27,7 +27,6 @@ $(document).ready(function ()
 
     $(window).on('resize', function (event)
     {
-        console.log(event);
         resizeModal();
     });
 });
