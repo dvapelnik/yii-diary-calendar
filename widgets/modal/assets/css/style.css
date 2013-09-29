@@ -15,7 +15,7 @@
 .modal-widget .modal-container .modal {
 	margin: 0 auto;
 	width: 60%;
-	height: 300px;
+	min-height: 300px;
 	background-color: #ffffff;
 	position: relative;
 	border-radius: 8px;
