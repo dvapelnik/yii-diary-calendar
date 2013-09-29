@@ -70,9 +70,8 @@ class Redactor extends CInputWidget
             )
         );
 
-        $js = <<<EOP
-		$('#{$id}').redactor({$options});
-EOP;
+        $js = "$('#{$id}').redactor({$options});";
+
         // Register js code
         $cs->registerScript('Yii.' . get_class($this) . '#' . $id, $js, CClientScript::POS_READY);
 
