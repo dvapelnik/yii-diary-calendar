@@ -4,6 +4,10 @@ class CalendarModule extends CWebModule
 {
     private $_assetsUrl;
 
+    public $webUserEmailField;
+    public $dbConnection;
+    public $dbPrefix;
+
     public function init()
     {
         // this method is called when the module is being created
@@ -25,8 +29,8 @@ class CalendarModule extends CWebModule
     {
         if(parent::beforeControllerAction($controller, $action))
         {
-            // this method is called before any module controller action is performed
-            // you may place customized code here
+            $this->checkTable(array('note', 'appo'));
+
             return true;
         } else
         {
@@ -44,5 +48,19 @@ class CalendarModule extends CWebModule
         }
 
         return $this->_assetsUrl;
+    }
+
+    private function checkTable($tables = array())
+    {
+        foreach($tables as $table)
+        {
+            if(Yii::app()->{$this->dbConnection}->schema->getTable($this->dbPrefix . $table) === null)
+            {
+                $schemeTemplateFile = dirname(__FILE__) . sprintf('/schemes/%sSchemeTemplate.sql', $table);
+                $queryTemplate = file_get_contents($schemeTemplateFile);
+                $query = str_replace('{%prefix%}', $this->dbPrefix, $queryTemplate);
+                Yii::app()->{$this->dbConnection}->createCommand($query)->query();
+            }
+        }
     }
 }
