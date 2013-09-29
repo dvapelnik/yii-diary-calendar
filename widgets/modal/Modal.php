@@ -59,7 +59,7 @@ class Modal extends CWidget
         if($this->_assetsUrl === null)
         {
             $this->_assetsUrl = Yii::app()->getAssetManager()->publish(
-                dirname(__FILE__ . DIRECTORY_SEPARATOR . 'assets'), false, -1, YII_DEBUG
+                dirname(__FILE__) . DIRECTORY_SEPARATOR . 'assets', false, -1, YII_DEBUG
             );
         }
 
