@@ -7,12 +7,13 @@
 
 $assetsUrl = $this->module->assetsUrl;
 
+$clientScript = Yii::app()->getClientScript();
 if(Yii::app()->clientScript->getPackageBaseUrl('jquery') === false)
 {
-    Yii::app()->getClientScript()->registerCoreScript('jquery');
+    $clientScript->registerCoreScript('jquery');
 }
 
-Yii::app()->getClientScript()->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS_END);
+$clientScript->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS_END);
 ?>
 
     <link rel="stylesheet" type="text/css" href="<?php echo $assetsUrl; ?>/css/style.css">
