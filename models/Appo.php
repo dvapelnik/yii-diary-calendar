@@ -95,4 +95,15 @@ class Appo extends CalendarModelLayer
             'criteria' => $criteria,
         ));
     }
+
+    public function getSend()
+    {
+        return $this->send == 1;
+    }
+
+    public function setSend($value)
+    {
+        VarDumper::dump($value);
+        $this->send = $value;
+    }
 }
