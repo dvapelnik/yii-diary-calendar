@@ -48,12 +48,12 @@ class Redactor extends CInputWidget
 
         // Get assets dir
         $baseDir = dirname(__FILE__);
-        $assets = Yii::app()->getAssetManager()->publish($baseDir . DIRECTORY_SEPARATOR . 'assets');
+        $assets = Yii::app()->getAssetManager()->publish($baseDir . DIRECTORY_SEPARATOR . 'assets', false, -1, YII_DEBUG);
 
         // Publish required assets
         $cs = Yii::app()->getClientScript();
 
-        $jsFile = $this->debugMode ? 'redactor.js' : 'redactor.min.js';
+        $jsFile = YII_DEBUG ? 'redactor.js' : 'redactor.min.js';
         $cs->registerScriptFile($assets . '/' . $jsFile);
         $cs->registerCssFile($assets . '/css/redactor.css');
 
@@ -64,8 +64,16 @@ class Redactor extends CInputWidget
             $this->htmlOptions['style'] = "width:{$this->width};height:{$this->height};";
         }
 
-        $options = CJSON::encode(array_merge($this->editorOptions, array('lang'    => $this->lang,
-                                                                         'toolbar' => $this->toolbar)
+        $this->editorOptions['path'] = $assets;
+        $this->editorOptions['toolbar'] = 'mini';
+
+        $options = CJSON::encode(
+            array_merge(
+                $this->editorOptions,
+                array(
+                    'lang'    => $this->lang,
+                    'toolbar' => $this->toolbar
+                )
             )
         );
 
