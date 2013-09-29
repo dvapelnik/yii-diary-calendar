@@ -7,14 +7,13 @@ $(document).ready(function ()
 
     resizeModal();
 
-    $('.modal-widget .modal-container').on('click', function ()
+    $('.modal-widget .modal-container').on('click', function (event)
     {
+        if (event.target !== this)
+        {
+            return;
+        }
         hideModal();
-    });
-
-    $('.modal-widget .modal-container .modal').on('click', function ()
-    {
-        return false;
     });
 
     $(window).on('keypress', function (event)
