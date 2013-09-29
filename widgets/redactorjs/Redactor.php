@@ -43,25 +43,6 @@ class Redactor extends CInputWidget
      */
     public function run()
     {
-        $name = $this->registerAssets();
-
-        // Do we have a model
-        if($this->hasModel())
-        {
-            $html = CHtml::activeTextArea($this->model, $this->attribute, $this->htmlOptions);
-        } else
-        {
-            $html = CHtml::textArea($name, $this->value, $this->htmlOptions);
-        }
-
-        echo $html;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function registerAssets()
-    {
         // Resolve name and id
         list($name, $id) = $this->resolveNameID();
 
@@ -93,7 +74,16 @@ class Redactor extends CInputWidget
         // Register js code
         $cs->registerScript('Yii.' . get_class($this) . '#' . $id, $js, CClientScript::POS_READY);
 
-        return $name;
+        // Do we have a model
+        if($this->hasModel())
+        {
+            $html = CHtml::activeTextArea($this->model, $this->attribute, $this->htmlOptions);
+        } else
+        {
+            $html = CHtml::textArea($name, $this->value, $this->htmlOptions);
+        }
+
+        echo $html;
     }
 }
 
