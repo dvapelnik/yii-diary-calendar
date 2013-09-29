@@ -12,7 +12,7 @@
                     <img src="<?php echo $this->assetsUrl; ?>/images/close.png">
                 </a>
             </div>
-            <div id="<?php echo $this->replacePlace ?>">dasadasddas</div>
+            <div id="<?php echo $this->replacePlace ?>"></div>
         </div>
     </div>
 </div>
