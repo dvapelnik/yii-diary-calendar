@@ -60,7 +60,7 @@ class DefaultController extends Controller
             {
                 $calendarModel->attributes = $_POST['Event'];
                 $calendarModel->owner = Yii::app()->user->id;
-                $calendarModel->timestamp = time();
+                $calendarModel->type = $type;
 
                 $calendarModel->save();
 
