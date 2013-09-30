@@ -18,20 +18,6 @@ $formId = 'cal-form';
         )
     );
     ?>
-    <?php if($class === 'Appo'): ?>
-        <div class="row">
-            <?php
-            echo $form->checkBox($calendarModel, 'send');
-            echo $form->labelEx(
-                $calendarModel,
-                'send',
-                array(
-                    'style' => 'display: inline-block; font-size: 16px; margin-left: 4px;'
-                )
-            );
-            ?>
-        </div>
-    <?php endif; ?>
     <div>
         <?php
         $this->widget('calendar.widgets.redactorjs.Redactor',

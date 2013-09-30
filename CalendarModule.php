@@ -21,6 +21,7 @@ class CalendarModule extends CWebModule
                 'calendar.messages.*.*',
                 'calendar.helpers.*',
                 'calendar.widgets.modal.*',
+                'calendar.widgets.time.*',
             )
         );
     }
