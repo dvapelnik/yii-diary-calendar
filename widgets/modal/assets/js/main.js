@@ -38,5 +38,5 @@ function hideModal()
 
 function resizeModal()
 {
-    $('.modal-widget .modal-container').height($(window).height())
+    $('.modal-widget .modal-container').height($(document).height())
 }

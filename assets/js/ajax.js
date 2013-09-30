@@ -17,7 +17,7 @@ $(document).ready(function ()
             success: function (data)
             {
                 $('#' + replacePath).html(data);
-                $(modalId).show(500);
+                $(modalId).show(500, resizeModal);
             },
             error  : function (e)
             {
