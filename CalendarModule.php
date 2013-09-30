@@ -30,7 +30,7 @@ class CalendarModule extends CWebModule
     {
         if(parent::beforeControllerAction($controller, $action))
         {
-            $this->checkTable(array('note', 'appo'));
+            $this->checkTable(array('event'));
 
             return true;
         } else
