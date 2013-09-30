@@ -100,7 +100,7 @@ $clientScript->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS
                                         CHtml::image($assetsPath . '/images/appo.png'),
                                         '#',
                                         array(
-                                            'data-cal-unix' => $day->getUNIX(),
+                                            'data-cal-unix' => $day->UNIX,
                                             'data-action'   => 'appo',
                                         )
                                     );

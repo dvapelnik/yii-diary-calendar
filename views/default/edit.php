@@ -1,10 +1,9 @@
 <?php
 /**
  * @var $this DefaultController
- * @var $calendarModel CalendarModelLayer
+ * @var $calendarModel Event
  * @var $form CActiveForm
  * @var $header string
- * @var $class string
  */
 
 $formId = 'cal-form';

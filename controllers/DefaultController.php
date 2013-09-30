@@ -49,23 +49,18 @@ class DefaultController extends Controller
         $type = Yii::app()->request->getParam('type', null);
         $timestamp = Yii::app()->request->getParam('timestamp', null);
 
-        $class = ucfirst($type);
-
         if($type && $timestamp && preg_match('/^(note|appo)$/', $type) || isset($_GET['id']))
         {
             /**
-             * @var $calendarModel CalendarModelLayer
+             * @var $calendarModel Event
              */
-            $calendarModel = new $class();
+            $calendarModel = new Event();
 
-            if(isset($_POST[$class]))
+            if(isset($_POST['Event']))
             {
-                $calendarModel->attributes = $_POST[$class];
+                $calendarModel->attributes = $_POST['Event'];
                 $calendarModel->owner = Yii::app()->user->id;
-                if($class == 'Appo')
-                {
-                    $calendarModel->email = Yii::app()->user->{$this->module->webUserEmailField};
-                }
+                $calendarModel->timestamp = time();
 
                 $calendarModel->save();
 
@@ -88,7 +83,6 @@ class DefaultController extends Controller
                 array(
                     'calendarModel' => $calendarModel,
                     'header'        => $type == 'note' ? 'Note' : 'Appointment',
-                    'class'         => $class,
                 ),
                 false,
                 true
