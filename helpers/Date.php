@@ -36,6 +36,12 @@ class Date extends CComponent
         $this->dowVerboseLong = $this->getDeyOfWeekVerbose();
         $this->monthVerbose = $this->getMonthVerbose();
 
+        $this->attachBehavior(
+            'calendarEventBehavior',
+            array(
+                'class' => 'calendar.behaviors.CalendarEventBehavior',
+            )
+        );
     }
 
     /**

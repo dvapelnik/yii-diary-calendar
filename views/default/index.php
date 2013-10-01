@@ -107,6 +107,30 @@ $clientScript->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS
                                     ?>
                                 </div>
                             </div>
+                            <div class="day-events">
+                                <?php if($dayEvents = $day->calEvents): ?>
+                                    <?php
+                                    /**
+                                     * @var $event Event
+                                     */
+                                    foreach($dayEvents as $event)
+                                    {
+                                        echo CHtml::link(
+                                            substr(
+                                                strip_tags(
+                                                    str_replace('\\', '', $event->text)
+                                                ), 0, 13
+                                            ) . ' ...',
+                                            '#',
+                                            array(
+                                                'data-event-id'   => $event->id,
+                                                'data-event-type' => $event->type,
+                                            )
+                                        );
+                                    }
+                                    ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </td>
                     <?php if ($day->dow % 7 == 0): ?>

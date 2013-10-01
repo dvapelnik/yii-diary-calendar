@@ -33,6 +33,11 @@
 	text-align: center;
 }
 
+.calendar-body table thead tr td,
+.calendar-body table tbody tr td {
+	width: 14%;
+}
+
 .calendar-body table tbody tr td div.day-container {
 	min-height: 100px;
 	border: 1px solid lightslategray;
@@ -67,7 +72,7 @@
 	height: 16px;
 }
 
-/* opacity for imagws in day in month */
+/* opacity for images in day in month */
 .calendar-body table tbody tr td:not(.day-locked) div.day-container div.day-header img {
 	height: 16px;
 	opacity: .2;
@@ -81,4 +86,30 @@
 	-o-transition: opacity 100ms linear;
 	-ms-transition: opacity 100ms linear;
 	transition: opacity 100ms linear;
+}
+
+.calendar-body table tbody tr td div.day-container div.day-events a {
+	display: block;
+	width: 90%;
+	margin: 4px auto;
+	padding: 0px 2px;
+	box-sizing: content-box;
+	border-radius: 4px;
+	text-decoration: none;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.calendar-body table tbody tr td div.day-container div.day-events a:hover {
+	-webkit-box-shadow: 0px 0px 10px rgba(126, 6, 13, 0.75);
+	-moz-box-shadow: 0px 0px 10px rgba(126, 6, 13, 0.75);
+	box-shadow: 0px 0px 10px rgba(126, 6, 13, 0.75);
+}
+
+.calendar-body table tbody tr td div.day-container div.day-events > a[data-event-type="note"] {
+	background-color: darkblue;
+}
+
+.calendar-body table tbody tr td div.day-container div.day-events > a[data-event-type="appo"] {
+	background-color: darkgreen;
 }
