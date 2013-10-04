@@ -29,7 +29,8 @@ class Month
     {
         $lastDay = end($this->_days);
 
-        $counter = end(array_keys($this->_days)) + 1;
+        $arrayKeys = array_keys($this->_days);
+        $counter = end($arrayKeys) + 1;
         $currentDay = $lastDay;
 
         for($i = $lastDay->dow; $i < 7; $i++)
