@@ -116,11 +116,10 @@ $clientScript->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS
                                     foreach($dayEvents as $event)
                                     {
                                         echo CHtml::link(
-                                            substr(
-                                                strip_tags(
-                                                    str_replace('\\', '', $event->text)
-                                                ), 0, 13
-                                            ) . ' ...',
+                                            Text::limit_chars(
+                                                str_replace('\\', '', strip_tags($event->text)),
+                                                10
+                                            ),
                                             '#',
                                             array(
                                                 'data-event-id'   => $event->id,

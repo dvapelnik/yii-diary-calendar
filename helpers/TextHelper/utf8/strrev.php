@@ -1,7 +1,6 @@
 <?php
 /**
  * UTF8::strrev
- *
  * @package    Kohana
  * @author     Kohana Team
  * @copyright  (c) 2007-2012 Kohana Team
@@ -10,9 +9,12 @@
  */
 function _strrev($str)
 {
-	if (UTF8::is_ascii($str))
-		return strrev($str);
+    if(UTF8::is_ascii($str))
+    {
+        return strrev($str);
+    }
 
-	preg_match_all('/./us', $str, $matches);
-	return implode('', array_reverse($matches[0]));
+    preg_match_all('/./us', $str, $matches);
+
+    return implode('', array_reverse($matches[0]));
 }

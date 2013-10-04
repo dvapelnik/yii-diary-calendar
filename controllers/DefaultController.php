@@ -35,6 +35,11 @@ class DefaultController extends Controller
             throw new CHttpException(502);
         }
 
+//        VarDumper::dump(Yii::getPathOfAlias('calendar.helpers.TextHelper.*'));
+//        die();
+
+        Yii::import('calendar.helpers.TextHelper.*.*');
+
         $this->render(
             'index',
             array(
