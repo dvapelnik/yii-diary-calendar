@@ -142,4 +142,12 @@ class DefaultController extends Controller
         }
     }
 
+    public function actionRemove()
+    {
+        if(isset($_GET['id']) && preg_match('/^\d+$/', $_GET['id']))
+        {
+            Event::model()->deleteByPk($_GET['id']);
+            $this->redirect(Yii::app()->request->urlReferrer);
+        }
+    }
 }
