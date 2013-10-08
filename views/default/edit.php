@@ -20,7 +20,7 @@ $formId = 'cal-form';
     ?>
     <div>
         <?php
-        $this->widget( 'calendar.widgets.redactorjs.Redactor',
+        $this->widget('calendar.widgets.redactorjs.Redactor',
             array(
                 'model'     => $calendarModel,
                 'attribute' => 'text',
