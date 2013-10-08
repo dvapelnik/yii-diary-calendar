@@ -1,5 +1,6 @@
 <?php
 /**
+ * @var $dayOfThisMonth Date
  * @var $currentDay Date
  * @var $month Month
  * @var $this DefaultController
@@ -28,35 +29,35 @@ $clientScript->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS
                 echo CHtml::link(
                     sprintf(
                         '%s %s',
-                        $currentDay->getPrevMonth()->monthVerbose,
-                        $currentDay->getPrevMonth()->year
+                        $dayOfThisMonth->getPrevMonth()->monthVerbose,
+                        $dayOfThisMonth->getPrevMonth()->year
                     ),
                     Yii::app()->createUrl(
                         'calendar/default/index',
                         array(
-                            'month' => $currentDay->getPrevMonth()->month,
-                            'year'  => $currentDay->getPrevMonth()->year,
+                            'month' => $dayOfThisMonth->getPrevMonth()->month,
+                            'year'  => $dayOfThisMonth->getPrevMonth()->year,
                         )
                     )
                 );
                 ?>
             </div>
             <div class="current">
-                <h2><?php echo sprintf('%s %s', $currentDay->monthVerbose, $currentDay->year); ?></h2>
+                <h2><?php echo sprintf('%s %s', $dayOfThisMonth->monthVerbose, $dayOfThisMonth->year); ?></h2>
             </div>
             <div class="next-month">
                 <?php
                 echo CHtml::link(
                     sprintf(
                         '%s %s',
-                        $currentDay->getNextMonth()->monthVerbose,
-                        $currentDay->getNextMonth()->year
+                        $dayOfThisMonth->getNextMonth()->monthVerbose,
+                        $dayOfThisMonth->getNextMonth()->year
                     ),
                     Yii::app()->createUrl(
                         'calendar/default/index',
                         array(
-                            'month' => $currentDay->getNextMonth()->month,
-                            'year'  => $currentDay->getNextMonth()->year,
+                            'month' => $dayOfThisMonth->getNextMonth()->month,
+                            'year'  => $dayOfThisMonth->getNextMonth()->year,
                         )
                     )
                 );
@@ -76,7 +77,14 @@ $clientScript->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS
                 <tr>
                     <?php foreach ($month->getMonth(true) as $day): ?>
                     <td <?php if (!$day->inMonth): ?>class="day-locked" <?php endif ?>>
-                        <div class="day-container">
+                        <div class="day-container
+                        <?php
+                        if($day->UNIX == $currentDay->UNIX)
+                        {
+                            echo ' current';
+                        }
+                        ?>
+                        ">
                             <div class="day-header">
                                 <?php
                                 echo $day->day;

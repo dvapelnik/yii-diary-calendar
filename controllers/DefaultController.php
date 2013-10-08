@@ -33,23 +33,23 @@ class DefaultController extends Controller
 
         try
         {
-            $currentDay = new Date($year, $month, empty($_GET) ? date('d') : 1);
-            $month = new Month($currentDay);
+            $dayOfThisMonth = new Date($year, $month, empty($_GET) ? date('d') : 1);
+            $month = new Month($dayOfThisMonth);
         } catch(CException $e)
         {
             throw new CHttpException(502);
         }
 
-//        VarDumper::dump(Yii::getPathOfAlias('calendar.helpers.TextHelper.*'));
-//        die();
+        $currentDay = new Date(date('Y'), date('n'), date('d'));
 
         Yii::import('calendar.helpers.TextHelper.*.*');
 
         $this->render(
             'index',
             array(
-                'currentDay' => $currentDay,
-                'month'      => $month,
+                'dayOfThisMonth' => $dayOfThisMonth,
+                'currentDay'     => $currentDay,
+                'month'          => $month,
             )
         );
     }

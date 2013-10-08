@@ -45,6 +45,10 @@
 	margin: 1px;
 }
 
+.calendar-body table tbody tr td div.current{
+	background-color: lightsteelblue;
+}
+
 .calendar-body table tbody tr td div.day-container:hover {
 	background-color: #fdeaa8;
 	-webkit-transition: background-color 100ms linear;
