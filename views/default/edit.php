@@ -10,7 +10,7 @@
 $formId = 'cal-form';
 ?>
 
-<h1 style="text-align: center"><?php echo $header; ?></h1>
+<h1 style="text-align: center"><?php echo Yii::t('CalendarModule.main', $header); ?></h1>
 <div class="form">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
@@ -34,7 +34,7 @@ $formId = 'cal-form';
         if(isset($isEdit) && $isEdit)
         {
             echo CHtml::link(
-                'Remove',
+                Yii::t('CalendarModule.main', 'Remove'),
                 Yii::app()->createUrl(
                     '/calendar/default/remove',
                     array(
@@ -47,7 +47,7 @@ $formId = 'cal-form';
             );
         }
         echo CHtml::submitButton(
-            'Save',
+            Yii::t('CalendarModule.main', 'Save'),
             array(
                 'style' => 'text-align: right;',
             )
