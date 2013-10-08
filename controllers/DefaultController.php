@@ -131,6 +131,7 @@ class DefaultController extends Controller
                     array(
                         'calendarModel' => $event,
                         'header'        => $event->type == 'note' ? 'Note' : 'Appointment',
+                        'isEdit'        => true,
                     ),
                     false,
                     true
