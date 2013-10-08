@@ -49,12 +49,12 @@ class DefaultController extends Controller
         );
     }
 
-    public function actionEdit()
+    public function actionAdd()
     {
         $type = Yii::app()->request->getParam('type', null);
         $timestamp = Yii::app()->request->getParam('timestamp', null);
 
-        if($type && $timestamp && preg_match('/^(note|appo)$/', $type) || isset($_GET['id']))
+        if($type && $timestamp && preg_match('/^(note|appo)$/', $type))
         {
             /**
              * @var $calendarModel Event
@@ -98,8 +98,48 @@ class DefaultController extends Controller
         }
     }
 
-    public function actionRemove()
+    public function actionEdit()
     {
+        if(isset($_GET['id']) && preg_match('/^\d+$/', $_GET['id']))
+        {
+            /**
+             * @var $event Event
+             */
+            $event = Event::model()->findByPk($_GET['id']);
+
+            if(isset($_POST['Event']))
+            {
+                $event->text = $_POST['Event']['text'];
+                $event->save();
+
+                $date = Date::GetFromUNIX($event->timestamp);
+
+                $this->redirect(
+                    Yii::app()->createUrl(
+                        'calendar/default/index',
+                        array(
+                            'month' => $date->month,
+                            'year'  => $date->year,
+                        )
+                    )
+                );
+            }
+
+            if($event !== null)
+            {
+                $this->renderPartial('edit',
+                    array(
+                        'calendarModel' => $event,
+                        'header'        => $event->type == 'note' ? 'Note' : 'Appointment',
+                    ),
+                    false,
+                    true
+                );
+            }
+        } else
+        {
+            throw new CHttpException(404);
+        }
     }
 
 }

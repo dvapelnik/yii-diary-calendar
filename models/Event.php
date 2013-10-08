@@ -93,4 +93,12 @@ class Event extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function canRemove($id, $owner){
+        if(!preg_match('/^\d+$/', $id)){
+            return false;
+        }
+
+        return self::model()->findByPk($id)->owner == $owner;
+    }
 }
