@@ -13,6 +13,11 @@ class DefaultController extends Controller
     {
         return array(
             array('allow',
+                'actions'    => array('edit', 'remove',),
+                'users'      => array('@'),
+                'expression' => 'Event::model()->canChange()',
+            ),
+            array('allow',
                 'users' => array('@'),
             ),
             array('deny',

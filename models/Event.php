@@ -92,8 +92,28 @@ class Event extends CActiveRecord
         ));
     }
 
-    public function canRemove($id, $owner)
+    public function canChange($id = null, $owner = null)
     {
+        if($owner === null)
+        {
+            if(!Yii::app()->user->isGuest)
+            {
+                $owner = Yii::app()->user->id;
+            } else
+            {
+                return false;
+            }
+        }
+
+        if($id === null)
+        {
+            $id = Yii::app()->request->getParam('id', $id);
+            if(!$id)
+            {
+                return false;
+            }
+        }
+
         if(!preg_match('/^\d+$/', $id))
         {
             return false;
