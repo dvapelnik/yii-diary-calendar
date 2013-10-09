@@ -77,15 +77,8 @@ $clientScript->registerScriptFile($assetsUrl . '/js/main.js', CClientScript::POS
                 <tr>
                     <?php foreach ($month->getMonth(true) as $day): ?>
                     <td <?php if (!$day->inMonth): ?>class="day-locked" <?php endif ?>>
-                        <div class="day-container
-                        <?php
-                        if($day->UNIX == $currentDay->UNIX)
-                        {
-                            echo ' current';
-                        }
-                        ?>
-                        ">
-                            <div class="day-header">
+                        <div class="day-container <?php if($day->UNIX == $currentDay->UNIX) { echo ' current'; } ?> ">
+                        <div class="day-header">
                                 <?php
                                 echo $day->day;
                                 $assetsPath = $this->module->getAssetsUrl();
