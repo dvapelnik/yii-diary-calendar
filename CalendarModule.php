@@ -8,6 +8,16 @@ class CalendarModule extends CWebModule
     public $dbConnection;
     public $dbPrefix;
 
+    public function getUrlRules()
+    {
+        return array(
+            'calendar'                                        => 'calendar/default/index',
+            'calendar/remove/<id:\d+>'                        => 'calendar/default/remove',
+            'calendar/add/<timestamp:\d+>/<type:(note|appo)>' => 'calendar/default/add',
+            'calendar/edit/<id:\d+>'                          => 'calendar/default/edit',
+        );
+    }
+
     public function init()
     {
         // this method is called when the module is being created
