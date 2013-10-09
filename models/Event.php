@@ -11,6 +11,8 @@
  */
 class Event extends CActiveRecord
 {
+    protected $_cryptor;
+
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -121,4 +123,33 @@ class Event extends CActiveRecord
 
         return self::model()->findByPk($id)->owner == $owner;
     }
+
+    protected function getCryptor()
+    {
+        if($this->_cryptor === null)
+        {
+            $this->_cryptor = new Cryptor(
+                Yii::app()->user->id,
+                Yii::app()->user->email
+            );
+        }
+
+        return $this->_cryptor;
+    }
+
+    protected function afterFind()
+    {
+        parent::afterFind();
+        $this->text = $this->cryptor->decrypt($this->text);
+    }
+
+    protected function beforeSave()
+    {
+        if(parent::beforeSave()){
+            $this->text = $this->cryptor->encrypt($this->text);
+        }
+        
+        return true;
+    }
+
 }
